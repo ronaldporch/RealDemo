@@ -4,7 +4,7 @@
 			<div class="col-md-8 col-md-offset-2">
 				<div class="text-center headline"><h1>Buy. Sell. Live.</h1></div>
 				<div class="input-group input-group-lg">
-					<input class="form-control" type="text" name="address" ng-model="address" placeholder="Enter An Street, City, or ZIP Code">
+					<input class="form-control" autocomplete="off" type="text" name="address" ng-model="address" uib-typeahead="address for address in locations($viewValue)" typeahead-loading="loadingLocations" typeahead-no-results="noResults" typeahead-wait-ms="250" typeahead-min-length="5" placeholder="Enter An Street, City, or ZIP Code">
 					<span class="input-group-btn">
         				<button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
       				</span>
