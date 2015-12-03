@@ -1,1 +1,64 @@
-{{locale}}
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-9">
+			<ui-gmap-google-map center='map.center' zoom='map.zoom' pan="true" bounds='map.bounds'>
+			<ui-gmap-markers models="homes" coords="'self'" icon="'icon'" click="showTitle"></ui-gmap-markers>
+		</ui-gmap-google-map>
+		</div>
+
+		<div class="col-md-3 info">
+			<div ng-hide="home">
+				
+				<div ng-repeat="home in homes" class="panel panel-default">
+						<div class="panel-body">
+							{{home.title}}
+						</div>
+				</div>
+			</div>
+			<div ng-show="home">
+				<button class="btn btn-default btn-xs" ng-click="closeHomeInfo()"><span class="glyphicon glyphicon-minus"></span></button>
+				<h2>{{home.street}}</h2>
+				<h4 ng-show="home">{{home.city}}, {{home.state}} {{home.zip}}</h4>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eget eros mollis, vestibulum dui in, aliquam massa. Morbi luctus lorem dui, sollicitudin accumsan quam malesuada ac. Duis feugiat magna a augue sodales, vitae interdum tellus porta. Phasellus ornare eros sed ligula accumsan egestas. Integer finibus id dolor ut ullamcorper. In eleifend rhoncus dui et pretium. In tristique felis eu metus tempus egestas. Vivamus quis velit in nibh rhoncus tristique. Etiam blandit est ac lacus interdum suscipit. Morbi vestibulum scelerisque ullamcorper. Pellentesque euismod efficitur nisl, ut bibendum dolor consequat in. Mauris felis magna, tempor eleifend facilisis a, ullamcorper et leo.
+
+Maecenas mauris sapien, hendrerit vel commodo in, aliquam non risus. Ut mattis tempor nulla, eget euismod nisl. Etiam non accumsan sapien, et pulvinar orci. Fusce feugiat blandit diam, id consectetur purus porta ut. Integer et euismod dui. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Suspendisse mollis nisl nec nisi imperdiet, et ultricies ante maximus. Integer eget rhoncus leo. Donec nec tempor lorem.
+
+Pellentesque fringilla purus nec nisl rutrum, eu suscipit dui convallis. Duis ultricies porttitor tellus, ac finibus eros pretium eget. Nulla lacus magna, eleifend eu tellus vel, tempor accumsan nisi. Duis in vehicula dolor. Quisque congue justo purus, id luctus dolor faucibus vel. Duis facilisis est nec nunc scelerisque, in lacinia orci vestibulum. Aliquam eget felis quis ante consectetur congue sed in lectus. In hac habitasse platea dictumst. Pellentesque ut orci ex. Nunc et pharetra massa. Pellentesque pulvinar erat ut condimentum ullamcorper. Quisque quis tellus sed turpis viverra pulvinar nec et ligula.
+
+Quisque dignissim magna at suscipit tristique. Sed luctus, odio eget accumsan egestas, elit nisl tempus massa, nec malesuada eros diam nec arcu. Fusce facilisis ornare felis ac hendrerit. Pellentesque condimentum consectetur nisi, at tristique dui efficitur eget. Morbi lobortis, nunc eget egestas dapibus, lorem nisl interdum metus, vitae pharetra nisi tortor at lorem. Praesent enim ipsum, scelerisque eu nisl gravida, ultricies venenatis libero. Sed posuere risus ante, eget bibendum ex efficitur sit amet.
+
+Donec et orci quam. Duis convallis egestas lectus, ut sagittis ligula vehicula ac. Phasellus cursus lorem quis pretium maximus. Nulla blandit venenatis elit in semper. Mauris bibendum, turpis nec imperdiet elementum, dui dui pellentesque risus, quis posuere nibh lectus quis metus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer ut ornare ex. Sed convallis elit lobortis ligula luctus, sit amet feugiat nunc malesuada. Nam consectetur massa efficitur aliquam placerat. Pellentesque eu orci ac ante sollicitudin luctus et vitae ex. Donec augue arcu, rutrum in quam et, blandit interdum eros. Ut quis odio eget nunc ultrices consectetur ut eget nibh.
+
+Sed dignissim est nisl, sed mollis turpis tempor in. Morbi sagittis elit in condimentum fringilla. Mauris nibh magna, efficitur at tristique non, faucibus vitae ligula. Integer egestas enim non cursus suscipit. Cras laoreet eros libero, eget blandit ex accumsan a. In hac habitasse platea dictumst. Vestibulum accumsan, mi id feugiat pellentesque, ante risus elementum nisi, eu tincidunt tellus orci et libero. Pellentesque rutrum tortor eget ipsum feugiat eleifend. Maecenas vel velit at augue condimentum placerat a at diam. Vivamus eu condimentum odio, at imperdiet justo.
+
+Proin ut gravida sem, sed gravida turpis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam erat volutpat. Sed sollicitudin turpis eget erat aliquam tincidunt. Vestibulum ac mauris et orci laoreet hendrerit. Nullam vel fermentum nibh. Etiam malesuada posuere elit in condimentum. Vivamus laoreet massa at leo cursus tincidunt. Proin odio purus, scelerisque sed imperdiet eget, pretium eu turpis. Pellentesque eu magna varius, bibendum metus sed, mollis ex. Quisque sit amet dolor sed augue venenatis porta a eget nisi. Duis id elit quis mauris molestie semper id id tellus. Proin eros ex, tristique sed urna sed, scelerisque mattis leo. Nam lacinia blandit nisi sit amet tristique. Cras maximus venenatis consectetur. Aenean ac condimentum lacus.
+
+Ut non turpis tempus, lobortis nunc sit amet, finibus est. Suspendisse in magna quis ex feugiat volutpat. Nunc vehicula risus vitae felis semper, at feugiat orci tincidunt. Mauris commodo dapibus quam ac aliquam. Mauris a dui dignissim, volutpat velit in, pretium est. Nunc sed imperdiet tortor. Curabitur maximus consequat neque nec malesuada. Mauris a sollicitudin ex. Nullam aliquet venenatis placerat. Maecenas feugiat quam vel facilisis posuere. Donec dapibus vulputate molestie. Morbi cursus, lorem ac consectetur aliquam, dolor est euismod lacus, sit amet suscipit turpis nisi vel est. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+Vestibulum nec volutpat nisi, id gravida velit. Quisque at lacus pharetra, tincidunt metus vel, ultricies ex. Vivamus ultrices nisi at gravida egestas. Sed eu aliquam lorem, sit amet volutpat dolor. Curabitur lacus metus, finibus cursus augue id, molestie luctus odio. Vivamus sit amet accumsan dolor. Proin id euismod enim. Maecenas sit amet ipsum a erat iaculis hendrerit. Fusce ornare felis lorem, eget pharetra ex fermentum sed. Nulla ut urna ac urna tempor ullamcorper sed quis elit. Morbi non ipsum nisl. Suspendisse venenatis, sapien vel pretium tristique, ante libero porttitor enim, sed consequat tortor dolor quis quam. Quisque pretium nisl sed tristique pulvinar. Nam convallis mi sit amet nisi malesuada dignissim.
+
+Aliquam at vehicula diam. Mauris odio turpis, luctus at volutpat a, consequat id sapien. Nunc porttitor placerat malesuada. Aliquam molestie ex sed nisl sagittis commodo. Donec ac diam sollicitudin, sagittis erat eget, laoreet leo. Morbi libero tellus, euismod consectetur fringilla at, luctus in risus. Nullam vitae venenatis est, in posuere massa. Vivamus mollis faucibus nisi ac tincidunt. Integer viverra nisl sed nunc iaculis, id blandit purus pellentesque. Sed eu tincidunt mauris. Aliquam sed posuere tellus, tempor lacinia neque. Mauris varius fermentum metus a interdum. Aliquam ultrices odio magna, vel consequat arcu tincidunt in. Suspendisse molestie lorem ipsum, nec scelerisque elit interdum ac. Curabitur porta vehicula quam quis placerat.
+			</div>
+		</div>
+	</div>
+	<pre>
+		{{map|json}}
+	</pre>
+</div>
+
+<style type="text/css">
+	body {
+		overflow-y: hidden;
+	} 
+	.gone {
+		width: 0;
+	}
+	.map {
+		overflow-y: hidden;
+	}
+	.info {
+		max-height: 95vh;
+		overflow-y: auto;
+	}
+	.angular-google-map-container { height: 95vh; }
+</style>

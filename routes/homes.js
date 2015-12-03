@@ -16,13 +16,28 @@ router.param('address', function(req,res,next,address){
 	req.address = address
 	next();
 })
-router.get('/:address', function(req, res, next){
+router.get('/address/:address', function(req, res, next){
 	console.log(req.address)
 	pg.connect(conString, function(err, client, done){
 		if(err){
 			res.json(err)
 		}
 		client.query('select * from homes', function(err, results){
+			done();
+			if(err){
+				res.json(err)
+			}
+			res.json(results.rows)
+		})
+	})
+})
+router.get('/id/:address', function(req, res, next){
+	console.log(req.address)
+	pg.connect(conString, function(err, client, done){
+		if(err){
+			res.json(err)
+		}
+		client.query('select * from homes where id = $1::int', [req.address], function(err, results){
 			done();
 			if(err){
 				res.json(err)
