@@ -16,13 +16,42 @@ router.param('address', function(req,res,next,address){
 	req.address = address
 	next();
 })
-router.get('/address/:address', function(req, res, next){
-	console.log(req.address)
+
+router.param('locationType', function(req,res,next,locationType){
+	req.locationType = locationType
+	next();
+})
+
+router.get('/address/:address/:locationType', function(req, res, next){
+	console.log(req.locationType)
+	var address = "%" + req.address.replace(/-/g, " ") + "%"
+	var address = address.replace(" USA", "")
+	if(req.locationType != "postal_code"){
+		var address = address.replace(/ [0-9]{5}/, "")
+	}else{
+		var address = 
+	}
+	console.log(address)
+	var concat = ""
+	switch (req.locationType) {
+		case "postal_code":
+			concat = "zip";
+			break;
+		case "street_address":
+			concat = "concat(street, ' ', city, ' ', state)";
+			break;
+		case "locality":
+			concat = "concat(street, ' ', city, ' ', state)"
+			break;
+		default:
+			concat = "concat(street, ' ', city, ' ', state)"
+	}
+	var query = "select * from homes where " + concat + " LIKE $1"
 	pg.connect(conString, function(err, client, done){
 		if(err){
 			res.json(err)
 		}
-		client.query('select * from homes', function(err, results){
+		client.query(query, [address], function(err, results){
 			done();
 			if(err){
 				res.json(err)

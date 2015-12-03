@@ -1,7 +1,7 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-9">
-			<ui-gmap-google-map center='map.center' zoom='map.zoom' pan="true" bounds='map.bounds'>
+			<ui-gmap-google-map center='map.center' zoom='map.zoom' pan="true">
 			<ui-gmap-markers models="homes" coords="'self'" icon="'icon'" click="showTitle"></ui-gmap-markers>
 		</ui-gmap-google-map>
 		</div>
@@ -52,6 +52,12 @@ Aliquam at vehicula diam. Mauris odio turpis, luctus at volutpat a, consequat id
 	} 
 	.gone {
 		width: 0;
+	}
+	.col-md-3 {
+		padding: 0 !important;
+	}
+	.col-md-9 {
+		padding: 0 !important;
 	}
 	.map {
 		overflow-y: hidden;

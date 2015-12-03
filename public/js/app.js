@@ -56,7 +56,6 @@ app.controller('MapController', ['$scope', 'homes', 'googleAPI', '$stateParams',
 			})
 		})
 	}
-
 	$scope.getHomes = function(){
 		var address = $scope.address.replace(/ /g, "-");
 		address = address.replace(/,/g, "");
@@ -66,8 +65,9 @@ app.controller('MapController', ['$scope', 'homes', 'googleAPI', '$stateParams',
 	$scope.closeHomeInfo = function(){
 		$scope.home = undefined
 	}
-	$scope.getAllHomes = function(address){
-		homes.getHomes(address).then(
+	$scope.getAllHomes = function(address, locationType){
+		console.log(locationType)
+		homes.getHomes(address, locationType).then(
 			function(res){
 				$scope.homes = res.data.map(function(item){
 					var location = {}
@@ -96,16 +96,17 @@ app.controller('MapController', ['$scope', 'homes', 'googleAPI', '$stateParams',
 	$scope.getLocationInfo = function(){
 		var address = $scope.locale.replace(/-/g, " ");
 		googleAPI.getLocations(address).then(function(res){
+			console.log(res)
 			$scope.geoLocation = res.data.results[0].geometry.location
-			$scope.bounds = res.data.results[0].geometry.bounds
-			$scope.getAllHomes(address);
+			//$scope.bounds = res.data.results[0].geometry.bounds
+			$scope.getAllHomes(address, res.data.results[0].types[0]);
 			$scope.map = { 
 				center: 
 				{ 
 					latitude: $scope.geoLocation.lat, 
 					longitude: $scope.geoLocation.lng 
 				},
-				bounds: 
+				/*bounds: 
 				{
 					northeast: 
 					{
@@ -117,7 +118,7 @@ app.controller('MapController', ['$scope', 'homes', 'googleAPI', '$stateParams',
 						latitude: $scope.bounds.southwest.lat,
 						longitude: $scope.bounds.southwest.lng
 					},
-				},
+				},*/
 				zoom: 10 };
 			console.log(res.data.results[0].geometry.location)
 		}, function(err){
@@ -131,8 +132,8 @@ app.controller('MapController', ['$scope', 'homes', 'googleAPI', '$stateParams',
 }])
 app.factory('homes', ['$http', function($http){
 	var o = {}
-	o.getHomes = function(address){
-		return $http.get('/api/homes/address/' + address)
+	o.getHomes = function(address, locationType){
+		return $http.get('/api/homes/address/' + address + "/" + locationType)
 	}
 	o.getHome = function(id){
 		return $http.get('/api/homes/id/' + id)
